@@ -16,6 +16,11 @@ size =
     width: screen[1].geometry.x,
     height: screen[1].geometry.y,
 
+-- Prefix for external commands.  Fex "gm " if your installation provides only
+-- GraphicsMagick, or "/some/crazy/path/" if you've used a weird prefix for
+-- ImageMagick installation
+command_prefix = ""
+
 cache_path = awful.util.getdir 'cache'
 awful.util.mkdir cache_path
 
@@ -34,7 +39,7 @@ bg_file = (name) ->
     resized = "#{resized_path}/#{name}.jpg"
 
     unless awful.util.file_readable resized
-        ret = os.execute "convert #{input} -resize #{size.width}x#{size.height} #{resized}"
+        ret = os.execute "#{command_prefix}convert #{input} -resize #{size.width}x#{size.height} #{resized}"
         if ret != 0
             naughty.notify
                 preset: naughty.config.presets.critical,
@@ -58,7 +63,7 @@ gen_bg_file = (from_, to, ratio) ->
     unless awful.util.file_readable wallpaper
         from_ = bg_file from_
         to = bg_file to
-        ret = os.execute "composite -blend #{pcnt}x#{100 - pcnt} #{to} #{from_} #{wallpaper}"
+        ret = os.execute "#{command_prefix}composite -blend #{pcnt}x#{100 - pcnt} #{to} #{from_} #{wallpaper}"
         if ret != 0
             naughty.notify
                 preset: naughty.config.presets.critical,

@@ -77,12 +77,13 @@ moonscript_ by now.
 
 The specific things you'll probably want to change are:
 
-================   ======  ================================
-Variable           Type    Use
-================   ======  ================================
-``adwaita_path``   string  Location of Adwaita theme
-``size``           table   Resolution to generate images at
-================   ======  ================================
+==================   ======  ====================================
+Variable             Type    Use
+==================   ======  ====================================
+``adwaita_path``     string  Location of Adwaita theme
+``command_prefix``   string  Prefix to apply to external commands
+``size``             table   Resolution to generate images at
+==================   ======  ====================================
 
 For example, if you're running Debian you may need to use
 ``/usr/share/backgrounds/gnome`` as the path to the background images.
@@ -112,7 +113,7 @@ I'd like to thank the following people who have contributed to
 Patches
 '''''''
 
-* <your name here>
+* Nathan McGregor
 
 Bug reports
 '''''''''''
