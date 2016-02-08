@@ -27,9 +27,9 @@ Add the following snippet to your ``rc.moon``
 
     with timer timeout: 3*60
         \connect_signal "timeout", (using nil) ->
-            bg_file = wallpaper!
-            for s = 1, screen.count!
-                gears.wallpaper.centered bg_file, s, "solid:#000000"
+            if bg_file = wallpaper!
+                for s = 1, screen.count!
+                    gears.wallpaper.centered bg_file, s, "solid:#000000"
         \emit_signal "timeout"
         \start!
 
@@ -64,6 +64,10 @@ calling ``composite`` every three minutes.
 
 The overhead for composite isn't all the great, but if you can afford the ~50MB
 the full cache takes it makes sense.
+
+We're also somewhat careful to not actually change the wallpaper unless it has
+actually changed.  It doesn't make a great deal of difference, but also doesn't
+take a great deal of effort to implement.
 
 Configuration
 -------------
