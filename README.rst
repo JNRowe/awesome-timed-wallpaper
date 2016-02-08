@@ -99,6 +99,9 @@ Simple improvements could include:
 * moving the data definition to a table for easy customisation from ``rc.moon``
 * using cairo_ or gdk-pixbuf_ via lgi_ to composite the images instead of
   shelling out to ImageMagick_
+* using cairo_ to create a surface directly as it supports heaps of `fancy
+  composition methods`_ and awesomewm_'s ``gears.wallpaper`` already accepts
+  surfaces as input
 
 Contributors
 ------------
@@ -142,5 +145,6 @@ reproduce the problem, or even better a patch!
 .. _cairo: http://cairographics.org/
 .. _gdk-pixbuf: https://git.gnome.org/browse/gdk-pixbuf
 .. _lgi: https://github.com/pavouk/lgi
+.. _fancy composition methods: http://cairographics.org/operators/
 .. _issue: https://github.com/JNRowe/awesome-timed-wallpaper/issues
 .. _mail: jnrowe@gmail.com
