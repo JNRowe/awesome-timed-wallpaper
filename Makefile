@@ -6,7 +6,7 @@ RST_TARGETS ::= $(patsubst %.rst, %.html, $(RST_SOURCES))
 MOONC ::= moonc
 RST2HTML ::= rst2html.py
 
-.PHONY: clean display_sources doc
+.PHONY: check clean display_sources doc
 
 all: $(TARGETS)
 
@@ -24,3 +24,5 @@ clean:
 display_sources:
 	@echo $(realpath $(SOURCES))
 
+check: lint_config.lua
+	$(MOONC) -l $(SOURCES)

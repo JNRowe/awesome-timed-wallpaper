@@ -1,0 +1,7 @@
+{
+  whitelist_globals: {
+    "": {
+      "screen",
+    }
+  }
+}
