@@ -11,9 +11,10 @@
 awful = require "awful"
 naughty = require "naughty"
 
+-- Default to resolution of first screen
 size =
-    width: 1920,
-    height: 1080,
+    width: screen[1].geometry.x,
+    height: screen[1].geometry.y,
 
 cache_path = awful.util.getdir 'cache'
 awful.util.mkdir cache_path
