@@ -19,7 +19,7 @@ $(RST_TARGETS): %.html: %.rst
 	$(RST2HTML) --strict $< $@
 
 clean:
-	rm -f $(TARGETS) $(RST_TARGETS)
+	$(RM) $(TARGETS) $(RST_TARGETS)
 
 display_sources:
 	@echo $(realpath $(SOURCES))
