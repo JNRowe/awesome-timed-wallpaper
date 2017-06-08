@@ -1,7 +1,7 @@
 SOURCES ::= $(wildcard *.moon)
-TARGETS ::= $(patsubst %.moon, %.lua, $(SOURCES))
+TARGETS ::= $(SOURCES:.moon=.lua)
 RST_SOURCES ::= $(wildcard *.rst)
-RST_TARGETS ::= $(patsubst %.rst, %.html, $(RST_SOURCES))
+RST_TARGETS ::= $(RST_SOURCES:.rst=.html)
 
 MOONC ::= moonc
 RST2HTML ::= rst2html.py
@@ -22,10 +22,10 @@ clean:
 	$(RM) $(TARGETS) $(RST_TARGETS)
 
 display_sources:
-	@echo $(realpath $(SOURCES))
+	@echo $(realpath $(SOURCES) $(RST_SOURCES))
 
 check: lint_config.lua
-	$(MOONC) -l $(SOURCES)
+	$(MOONC) -l $(filter-out lint_config.moon, $(SOURCES))
 	for f in $(RST_SOURCES); do \
 	    $(RST2HTML) --strict $$f >/dev/null || exit $?; \
 	done
