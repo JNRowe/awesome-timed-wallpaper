@@ -17,7 +17,7 @@ created by Jakub Steiner (jimmac).
 Quick Usage
 -----------
 
-You'll need ImageMagick_ installed, as it is used to blend the images.
+You’ll need ImageMagick_ installed, as it is used to blend the images.
 
 Add the following snippet to your ``rc.moon``
 
@@ -36,19 +36,19 @@ Add the following snippet to your ``rc.moon``
 Why?
 ----
 
-Simple, I've badgered Léna about switching window managers for some time now.
+Simple, I’ve badgered Léna about switching window managers for some time now.
 Mostly because many of the lunchtime complaints she makes about her current
 setup are *already* solved by a different window manager.
 
-However, that of course means I'm on the hook when functionality she relied on
-doesn't exist with that new choice.  And apparently wallpaper that changes
+However, that of course means I’m on the hook when functionality she relied on
+doesn’t exist with that new choice.  And apparently wallpaper that changes
 throughout the day is item one on the list.
 
 This **dirty** hack just adds simplistic support for the Adwaita backgrounds she
 uses to awesomewm_.  It should serve mostly as an example of using timers and
 such, but it is functional.
 
-[The solution I'd actually recommend is to use one of the many tiling layouts
+[The solution I’d actually recommend is to use one of the many tiling layouts
 and never see your wallpaper again 😏]
 
 How?
@@ -59,23 +59,23 @@ minute hack(and ten of those were spent writing this very document).
 
 Basically we have a timer which calls a function to generate the wallpaper as
 it should be at this moment.  We generate the wallpapers using ``composite``
-from ImageMagick_, and cache them so that after a couple of days we're no longer
+from ImageMagick_, and cache them so that after a couple of days we’re no longer
 calling ``composite`` every three minutes.
 
-The overhead for composite isn't all the great, but if you can afford the ~50MB
+The overhead for composite isn’t all the great, but if you can afford the ~50MB
 the full cache takes it makes sense.
 
-We're also somewhat careful to not actually change the wallpaper unless it has
-actually changed.  It doesn't make a great deal of difference, but also doesn't
+We’re also somewhat careful to not actually change the wallpaper unless it has
+actually changed.  It doesn’t make a great deal of difference, but also doesn’t
 take a great deal of effort to implement.
 
 Configuration
 -------------
 
-If you're using awesomewm_, you should be used to customising lua_ or
+If you’re using awesomewm_, you should be used to customising lua_ or
 moonscript_ by now.
 
-The specific things you'll probably want to change are:
+The specific things you’ll probably want to change are:
 
 ==================   ======  ====================================
 Variable             Type    Use
@@ -85,14 +85,14 @@ Variable             Type    Use
 ``size``             table   Resolution to generate images at
 ==================   ======  ====================================
 
-For example, if you're running Debian you may need to use
+For example, if you’re running Debian you may need to use
 ``/usr/share/backgrounds/gnome`` as the path to the background images.
 
 The future
 ----------
 
 If people would like to see a more generic framework for implementing this sort
-of behaviour then open an issue, and I'll probably get to it.  As things stand
+of behaviour then open an issue, and I’ll probably get to it.  As things stand
 this does what I was told to implement, and no more.
 
 Simple improvements could include:
@@ -101,13 +101,13 @@ Simple improvements could include:
 * using cairo_ or gdk-pixbuf_ via lgi_ to composite the images instead of
   shelling out to ImageMagick_
 * using cairo_ to create a surface directly as it supports heaps of `fancy
-  composition methods`_ and awesomewm_'s ``gears.wallpaper`` already accepts
+  composition methods`_ and awesomewm_’s ``gears.wallpaper`` already accepts
   surfaces as input
 
 Contributors
 ------------
 
-I'd like to thank the following people who have contributed to
+I’d like to thank the following people who have contributed to
 ``awesome-timed-wallpaper``.
 
 Patches
@@ -125,8 +125,8 @@ Ideas
 
 * Léna Franck
 
-If I've forgotten to include your name I wholeheartedly apologise.  Just drop me
-a mail_ and I'll update the list!
+If I’ve forgotten to include your name I wholeheartedly apologise.  Just drop me
+a mail_ and I’ll update the list!
 
 Bugs
 ----
@@ -134,7 +134,7 @@ Bugs
 If you find any problems, bugs or just have a question about this package either
 file an issue_ or drop me a mail_.
 
-If you've found a bug please attempt to include a minimal testcase so I can
+If you’ve found a bug please attempt to include a minimal testcase so I can
 reproduce the problem, or even better a patch!
 
 .. _awesomewm: http://awesome.naquadah.org/

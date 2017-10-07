@@ -16,8 +16,8 @@ size =
     width: screen[1].geometry.x,
     height: screen[1].geometry.y,
 
--- Prefix for external commands.  Fex "gm " if your installation provides only
--- GraphicsMagick, or "/some/crazy/path/" if you've used a weird prefix for
+-- Prefix for external commands.  Fex “gm “ if your installation provides only
+-- GraphicsMagick, or “/some/crazy/path/” if you’ve used a weird prefix for
 -- ImageMagick installation
 command_prefix = ""
 
@@ -91,21 +91,21 @@ background = ->
             _STATIC = false
             gen_bg_file "morning", "bright-day", (hours - 8) / 5
         when 13, 14, 15, 16, 17
-            -- It's 1 PM, we're showing the day image in full force now, for 5
+            -- It’s 1 PM, we’re showing the day image in full force now, for 5
             -- hours ending at 6 PM.
             _STATIC = true
             bg_file "bright-day"
         when 18, 19, 20, 21, 22, 23
-            -- It's 8 PM and it's going to start to get darker. This will
+            -- It’s 8 PM and it’s going to start to get darker. This will
             -- transition for 6 hours up until midnight.
             _STATIC = false
             gen_bg_file "bright-day", "good-night", (hours - 18) / 6
         when 0, 1, 2, 3, 4
-            -- It's midnight. It'll stay dark for 5 hours up until 5 AM.
+            -- It’s midnight. It’ll stay dark for 5 hours up until 5 AM.
             _STATIC = true
             bg_file "good-night"
         when 5, 6
-            -- It's 5 AM. We'll start transitioning to sunrise for 2 hours up
+            -- It’s 5 AM. We’ll start transitioning to sunrise for 2 hours up
             -- until 7 AM.
             _STATIC = false
             gen_bg_file "good-night", "morning", (hours - 5) / 2
