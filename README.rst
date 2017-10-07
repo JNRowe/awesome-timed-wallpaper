@@ -111,17 +111,17 @@ I’d like to thank the following people who have contributed to
 ``awesome-timed-wallpaper``.
 
 Patches
-'''''''
+~~~~~~~
 
 * Nathan McGregor
 
 Bug reports
-'''''''''''
+~~~~~~~~~~~
 
 * <your name here>
 
 Ideas
-'''''
+~~~~~
 
 * Léna Franck
 
