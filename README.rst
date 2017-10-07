@@ -25,11 +25,11 @@ Add the following snippet to your ``rc.moon``
 
     wallpaper = require "adwaita-timed"
 
-    with timer timeout: 3*60
+    with gears.timer timeout: 3*60
         \connect_signal "timeout", (using nil) ->
             if bg_file = wallpaper!
-                for s = 1, screen.count!
-                    gears.wallpaper.centered bg_file, s, "solid:#000000"
+                awful.screen.connect_for_each_screen (using nil) =>
+                    gears.wallpaper.centered bg_file, self, "solid:#000000"
         \emit_signal "timeout"
         \start!
 
