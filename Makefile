@@ -4,7 +4,7 @@ RST_SOURCES ::= $(wildcard *.rst)
 RST_TARGETS ::= $(RST_SOURCES:.rst=.html)
 
 MOONC ::= moonc
-RST2HTML ::= rst2html.py
+RST2HTML ::= rst2html
 
 .PHONY: check clean display_sources doc
 
