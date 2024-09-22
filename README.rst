@@ -103,6 +103,8 @@ Simple improvements could include:
 * using cairo_ to create a surface directly as it supports heaps of `fancy
   composition methods`_ and awesomewm_’s ``gears.wallpaper`` already accepts
   surfaces as input
+* use ``awful.spawn``’s asynchronous execution support to remove blocking calls
+  to external processes
 
 Contributors
 ------------
