@@ -8,7 +8,7 @@
 -- Jakub Steiner <jimmac@gmail.com>.  The licence is LGPL-2.1 to reflect that
 -- origin.
 
-awful = require "awful"
+gfs = require "gears.filesystem"
 naughty = require "naughty"
 
 -- Default to resolution of first screen
@@ -21,14 +21,13 @@ size =
 -- ImageMagick installation
 command_prefix = ""
 
-cache_path = awful.util.getdir 'cache'
-awful.util.mkdir cache_path
+cache_path = gfs.get_xdg_cache_home!
 
 adwaita_path = "/usr/share/themes/Adwaita/backgrounds"
 resized_path = "#{cache_path}/resized"
-awful.util.mkdir resized_path
+gfs.make_directories resized_path
 generated_path = "#{cache_path}/generated"
-awful.util.mkdir generated_path
+gfs.make_directories generated_path
 
 ---
 -- Find path to background file
@@ -38,7 +37,7 @@ bg_file = (name) ->
     input = "#{adwaita_path}/#{name}.jpg"
     resized = "#{resized_path}/#{name}.jpg"
 
-    unless awful.util.file_readable resized
+    unless gfs.file_readable resized
         ret = os.execute "#{command_prefix}convert #{input} -resize #{size.width}x#{size.height} #{resized}"
         if ret != 0
             naughty.notify
@@ -60,7 +59,7 @@ gen_bg_file = (from_, to, ratio) ->
     else
         PCNT = pcnt
     wallpaper = "#{generated_path}/#{from_}-#{to}-#{pcnt}.jpg"
-    unless awful.util.file_readable wallpaper
+    unless gfs.file_readable wallpaper
         from_ = bg_file from_
         to = bg_file to
         ret = os.execute "#{command_prefix}composite -blend #{pcnt}x#{100 - pcnt} #{to} #{from_} #{wallpaper}"
