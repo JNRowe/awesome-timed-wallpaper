@@ -1,0 +1,22 @@
+name: Moonscript syntax validity
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up moonscript
+        run: |
+          sudo apt install luarocks
+          sudo luarocks install Moonscript
+      - name: Build
+        run: |
+          make
+      - name: Linting Moonscript files
+        run: |
+          for f in $(git ls-files | grep '\.moon'); do
+              moonc -l $f >/dev/null || exit $?;
+          done
